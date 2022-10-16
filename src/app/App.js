@@ -10,12 +10,15 @@ import ChannelsPage from "../common/pages/ChannelsPage";
 import ChannelDetailPage from "../common/pages/ChannelDetailPage";
 import ErrorPage from "../common/pages/ErrorPage";
 import NotFoundPage from "../common/pages/NotFoundPage";
+import GuidePage from "../common/pages/GuidePage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeLayOut />}>
         <Route index element={<HomePage />} />
+        <Route path="docs" element={<GuidePage />} />
+
         <Route path="/projects" element={<ConsoleLayOut />}>
           <Route index element={<ProjectsPage />} />
 
