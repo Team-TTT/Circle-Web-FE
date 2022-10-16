@@ -55,8 +55,8 @@ const StartGuideWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 150px 0px;
   height: calc(50% - 30px);
+  padding: 150px 0px;
 `;
 
 const TitleWrapper = styled.div`
@@ -69,8 +69,8 @@ const Title = styled.h1`
 `;
 
 const StartProjectButton = styled(Link)`
-  padding: 10px;
   margin: 50px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: ${theme.blue};
