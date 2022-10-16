@@ -1,6 +1,7 @@
 {
   "name": "circle-wep-fe",
   "version": "0.0.1",
+  "description": "실시간 음성채팅 서비스",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -11,7 +12,7 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -30,7 +31,7 @@
     ]
   },
   "lint-staged": {
-    "*.{js}": "eslint --fix"
+    "*.js": "eslint --fix"
   },
   "devDependencies": {
     "eslint": "^8.25.0",

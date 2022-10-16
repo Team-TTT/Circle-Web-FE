@@ -9,5 +9,5 @@ npm run prepare
 
 npm start
 
-// http://localhost:3000/
+// http://localhost:3001/
 ```
