@@ -18,17 +18,17 @@ function App() {
       <Route path="/" element={<HomeLayOut />}>
         <Route index element={<HomePage />} />
         <Route path="docs" element={<GuidePage />} />
+      </Route>
 
-        <Route path="/projects" element={<ConsoleLayOut />}>
-          <Route index element={<ProjectsPage />} />
+      <Route path="/projects" element={<ConsoleLayOut />}>
+        <Route index element={<ProjectsPage />} />
 
-          <Route path=":projectId">
-            <Route index element={<ProjectDetailPage />} />
+        <Route path=":projectId">
+          <Route index element={<ProjectDetailPage />} />
 
-            <Route path="channels">
-              <Route index element={<ChannelsPage />} />
-              <Route path=":channelId" element={<ChannelDetailPage />} />
-            </Route>
+          <Route path="channels">
+            <Route index element={<ChannelsPage />} />
+            <Route path=":channelId" element={<ChannelDetailPage />} />
           </Route>
         </Route>
       </Route>
