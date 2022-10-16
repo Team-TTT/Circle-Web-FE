@@ -2,14 +2,14 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import HomeLayOut from "../common/layout/HomeLayOut";
-import ConsoleLayOut from "../common/layout/ConsoleLayOut";
-import ErrorPage from "../common/pages/ErrorPage";
 import HomePage from "../common/pages/HomePage";
-import NotFoundPage from "../common/pages/NotFoundPage";
+import ConsoleLayOut from "../common/layout/ConsoleLayOut";
 import ProjectsPage from "../common/pages/ProjectsPage";
 import ProjectDetailPage from "../common/pages/ProjectDetailPage";
 import ChannelsPage from "../common/pages/ChannelsPage";
 import ChannelDetailPage from "../common/pages/ChannelDetailPage";
+import ErrorPage from "../common/pages/ErrorPage";
+import NotFoundPage from "../common/pages/NotFoundPage";
 
 function App() {
   return (
