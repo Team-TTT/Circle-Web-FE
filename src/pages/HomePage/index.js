@@ -20,8 +20,11 @@ export default function HomePage() {
     <Container>
       <StartGuideWrapper>
         <TitleWrapper>
-          <Title>실시간 그룹콜</Title>
-          <Title>지금 바로 시작하세요</Title>
+          <Title>
+            실시간 그룹콜
+            <br />
+            지금 바로 시작하세요
+          </Title>
         </TitleWrapper>
         <StartProjectButton to="/projects">
           프로젝트 시작하기
