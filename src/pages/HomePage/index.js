@@ -3,9 +3,9 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaLongArrowAltDown } from "react-icons/fa";
 
-import appImage1 from "../../../assets/app2.png";
-import appImage2 from "../../../assets/app3.png";
-import theme from "../../constants/theme";
+import appImage1 from "../../assets/app2.png";
+import appImage2 from "../../assets/app3.png";
+import theme from "../../config/constants/theme";
 
 export default function HomePage() {
   const handleScrollToDown = () => {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaHeadphones } from "react-icons/fa";
 
-import theme from "../../constants/theme";
+import theme from "../../config/constants/theme";
 
 export default function Navbar() {
   const handleOnLogin = () => {};
@@ -11,12 +11,12 @@ export default function Navbar() {
   return (
     <>
       <Container>
-        <GoToHome to="/">
+        <HomeLink to="/">
           <HomeIcon />
           <HomeTitle>Circle</HomeTitle>
-        </GoToHome>
+        </HomeLink>
         <RightItems>
-          <GoToGuide to="/docs">GUIDE</GoToGuide>
+          <GuideLink to="/guide">GUIDE</GuideLink>
           <LoginButton onClick={handleOnLogin}>LOGIN</LoginButton>
         </RightItems>
       </Container>
@@ -38,12 +38,10 @@ const Container = styled.nav`
   font-weight: 400;
 `;
 
-const NavHelper = styled.div`
-  height: 60px;
-`;
-
-const HomeTitle = styled.span`
-  font-size: 28px;
+const HomeLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  color: ${theme.blue};
 `;
 
 const HomeIcon = styled(FaHeadphones)`
@@ -51,10 +49,8 @@ const HomeIcon = styled(FaHeadphones)`
   font-size: 26px;
 `;
 
-const GoToHome = styled(Link)`
-  display: block;
-  text-decoration: none;
-  color: ${theme.blue};
+const HomeTitle = styled.span`
+  font-size: 28px;
 `;
 
 const RightItems = styled.div`
@@ -63,14 +59,18 @@ const RightItems = styled.div`
   width: 160px;
 `;
 
+const GuideLink = styled(Link)`
+  display: block;
+  text-decoration: none;
+  font-size: 24px;
+  color: ${theme.black};
+`;
+
 const LoginButton = styled.div`
   font-size: 24px;
   cursor: pointer;
 `;
 
-const GoToGuide = styled(Link)`
-  display: block;
-  text-decoration: none;
-  font-size: 24px;
-  color: ${theme.black};
+const NavHelper = styled.div`
+  height: 60px;
 `;
