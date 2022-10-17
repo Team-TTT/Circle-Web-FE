@@ -1,0 +1,36 @@
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+
+import HomeLayOut from "../layout/HomeLayOut";
+import HomePage from "../pages/HomePage";
+import GuidePage from "../pages/GuidePage";
+import ConsoleLayOut from "../layout/ConsoleLayOut";
+import ProjectsPage from "../pages/ProjectsPage";
+import ProjectDetailPage from "../pages/ProjectDetailPage";
+import ChannelsPage from "../pages/ChannelsPage";
+import ChannelDetailPage from "../pages/ChannelDetailPage";
+import ErrorPage from "../pages/ErrorPage";
+import NotFoundPage from "../pages/NotFoundPage";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomeLayOut />}>
+        <Route index element={<HomePage />} />
+        <Route path="guide" element={<GuidePage />} />
+      </Route>
+      <Route path="/projects" element={<ConsoleLayOut />}>
+        <Route index element={<ProjectsPage />} />
+        <Route path=":projectId">
+          <Route index element={<ProjectDetailPage />} />
+          <Route path="channels">
+            <Route index element={<ChannelsPage />} />
+            <Route path=":channelId" element={<ChannelDetailPage />} />
+          </Route>
+        </Route>
+      </Route>
+      <Route path="/error" element={<ErrorPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
+}
