@@ -11,7 +11,7 @@ export default function Modal({ children, isOpen, setIsOpen }) {
     return null;
   }
 
-  const handleOnOuterClick = (e) => {
+  const handleOuterClick = (e) => {
     e.stopPropagation();
 
     if (e.currentTarget === e.target) {
@@ -19,15 +19,11 @@ export default function Modal({ children, isOpen, setIsOpen }) {
     }
   };
 
-  const handleOnCloseClick = () => {
-    setIsOpen(false);
-  };
-
   return (
     <Portal>
-      <Container onClick={handleOnOuterClick}>
+      <Container onClick={handleOuterClick}>
         <Wrapper>
-          <CloseButton onClick={handleOnCloseClick}>
+          <CloseButton onClick={() => setIsOpen(false)}>
             <CloseIcon />
           </CloseButton>
           {children}
@@ -74,7 +70,7 @@ const Wrapper = styled.div`
   height: 50vh;
   max-width: 500px;
   max-height: 280px;
-  padding: 20px;
+  padding: 32px 20px;
   border: none;
   border-radius: 10px;
   background-color: ${theme.gray};
