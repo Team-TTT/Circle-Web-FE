@@ -3,8 +3,8 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { FaLongArrowAltDown } from "react-icons/fa";
 
-import appImage1 from "../../assets/app2.png";
-import appImage2 from "../../assets/app3.png";
+import appImage1 from "../../assets/images/app2.png";
+import appImage2 from "../../assets/images/app3.png";
 import theme from "../../config/constants/theme";
 
 export default function HomePage() {
@@ -26,7 +26,7 @@ export default function HomePage() {
             지금 바로 시작하세요
           </Title>
         </TitleWrapper>
-        <StartProjectButton to="/projects">
+        <StartProjectButton to="/console/projects">
           프로젝트 시작하기
         </StartProjectButton>
         <DownIcon onClick={handleScrollToDown} />

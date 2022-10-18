@@ -11,10 +11,10 @@ export default function Modal({ children, isOpen, setIsOpen }) {
     return null;
   }
 
-  const handleOuterClick = (e) => {
-    e.stopPropagation();
+  const handleOuterClick = (event) => {
+    event.stopPropagation();
 
-    if (e.currentTarget === e.target) {
+    if (event.currentTarget === event.target) {
       setIsOpen(false);
     }
   };

@@ -19,13 +19,12 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="guide" element={<GuidePage />} />
       </Route>
-      <Route path="/projects" element={<ConsoleLayOut />}>
-        <Route index element={<ProjectsPage />} />
-        <Route path=":projectId">
-          <Route index element={<ProjectDetailPage />} />
-          <Route path="channels">
-            <Route index element={<ChannelsPage />} />
-            <Route path=":channelId" element={<ChannelDetailPage />} />
+      <Route path="console" element={<ConsoleLayOut />}>
+        <Route path="projects" element={<ProjectsPage />}>
+          <Route path=":projectId" element={<ProjectDetailPage />}>
+            <Route path="channels" element={<ChannelsPage />}>
+              <Route path=":channelId" element={<ChannelDetailPage />} />
+            </Route>
           </Route>
         </Route>
       </Route>
