@@ -5,7 +5,7 @@ import { MdOutlineTrackChanges, MdOutlineChat } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 import theme from "../../config/constants/theme";
-import logo from "../../assets/images/app1.png";
+import testImg from "../../assets/images/app1.png";
 
 export default function Sidebar() {
   const handleOnLogout = () => {};
@@ -13,7 +13,7 @@ export default function Sidebar() {
   return (
     <Container>
       <UserWrapper>
-        <UserImage alt="profile-img" src={logo} />
+        <UserImage alt="profile-img" src={testImg} />
         <UserEmail>email</UserEmail>
       </UserWrapper>
       <SideWrapper>
@@ -44,9 +44,9 @@ const Container = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  min-width: 230px;
   width: 15vw;
+  min-width: 230px;
+  height: 100%;
   background-color: ${theme.gray};
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
@@ -59,9 +59,9 @@ const UserWrapper = styled.header`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 16px;
   margin-top: 1vh;
   margin-left: 2vw;
+  padding: 16px;
 `;
 
 const UserImage = styled.img`
@@ -83,8 +83,8 @@ const SideWrapper = styled.div`
 
 const ListWrapper = styled.ul`
   display: block;
-  padding: 0;
   margin-top: 2vh;
+  padding: 0;
   list-style: none;
 `;
 
@@ -101,15 +101,15 @@ const ProjectLink = styled(Link)`
   align-items: center;
   width: 100%;
   padding: 1.5vmin;
+  border-radius: 20px;
   font-size: 18px;
   color: ${theme.black};
   text-decoration: none;
-  border-radius: 20px;
   cursor: pointer;
 
   &:hover {
-    color: ${theme.white};
     background-color: ${theme.blue};
+    color: ${theme.white};
     @include transition(all 0.5s ease);
   }
 `;
@@ -126,15 +126,15 @@ const ChannelLink = styled(Link)`
   text-align: center;
   min-width: 7vw;
   padding: 1.5vmin;
+  border-radius: 20px;
   font-size: 18px;
   color: ${theme.black};
   text-decoration: none;
-  border-radius: 20px;
   cursor: pointer;
 
   &:hover {
-    color: ${theme.white};
     background-color: ${theme.blue};
+    color: ${theme.white};
     @include transition(all 0.5s ease);
   }
 `;
@@ -152,17 +152,18 @@ const LogoutButton = styled.button`
   width: 90%;
   margin: 1vmin;
   padding: 1.5vmin;
-  font-size: 18px;
   border: none;
   border-radius: 20px;
+  font-size: 18px;
   cursor: pointer;
 
   &:hover {
-    color: ${theme.white};
     background-color: ${theme.blue};
+    color: ${theme.white};
     @include transition(all 0.5s ease);
   }
 `;
+
 const LogoutIcon = styled(RiLogoutBoxLine)`
   margin-right: 0.7vw;
   font-size: 28px;
