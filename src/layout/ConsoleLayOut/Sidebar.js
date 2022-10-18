@@ -16,36 +16,29 @@ export default function Sidebar() {
         <UserImage alt="profile-img" src={logo} />
         <UserEmail>email</UserEmail>
       </UserWrapper>
-      <List>
-        <SideWrapper>
-          <ListWrapper>
+      <SideWrapper>
+        <ListWrapper>
+          <ListItem>
             <ProjectLink to="/console/projects/:projectId">
               <SettingIcon />
               버튼 설치 및 설정
             </ProjectLink>
-          </ListWrapper>
-          <ListWrapper>
+          </ListItem>
+          <ListItem>
             <ChannelLink to="/console/projects/:projectId/channels">
               <ChannelIcon />
               채널 관리
             </ChannelLink>
-          </ListWrapper>
-        </SideWrapper>
+          </ListItem>
+        </ListWrapper>
         <LogoutButton onClick={handleOnLogout}>
           <LogoutIcon />
           Logout
         </LogoutButton>
-      </List>
+      </SideWrapper>
     </Container>
   );
 }
-
-const List = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`;
 
 const Container = styled.nav`
   display: flex;
@@ -81,14 +74,21 @@ const UserEmail = styled.span`
   font-size: 30px;
 `;
 
-const SideWrapper = styled.ul`
+const SideWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+const ListWrapper = styled.ul`
   display: block;
   padding: 0;
   margin-top: 2vh;
   list-style: none;
 `;
 
-const ListWrapper = styled.li`
+const ListItem = styled.li`
   display: inline-block;
   width: 90%;
   margin: 15px;
