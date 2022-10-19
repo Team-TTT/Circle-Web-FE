@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaHeadphones } from "react-icons/fa";
 
+import useLogin from "../../hooks/useLogin";
 import theme from "../../config/constants/theme";
 
 export default function Navbar() {
-  const handleOnLogin = () => {};
+  const handleOnLogin = useLogin();
 
   return (
     <>
@@ -31,7 +32,7 @@ const Container = styled.nav`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 60px;
   padding: 0px 20px;
   background-color: ${theme.white};

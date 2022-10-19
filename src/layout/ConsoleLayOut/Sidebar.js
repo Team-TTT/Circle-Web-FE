@@ -4,11 +4,12 @@ import styled from "styled-components";
 import { MdOutlineTrackChanges, MdOutlineChat } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
+import useLogout from "../../hooks/useLogout";
 import theme from "../../config/constants/theme";
 import testImg from "../../assets/images/app1.png";
 
 export default function Sidebar() {
-  const handleOnLogout = () => {};
+  const handleOnLogout = useLogout();
 
   return (
     <Container>
