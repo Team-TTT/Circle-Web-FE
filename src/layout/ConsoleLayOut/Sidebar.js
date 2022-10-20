@@ -9,7 +9,7 @@ import theme from "../../config/constants/theme";
 import testImg from "../../assets/images/app1.png";
 
 export default function Sidebar() {
-  const handleOnLogout = useLogout();
+  const handleOnLogOut = useLogout();
 
   return (
     <Container>
@@ -32,7 +32,7 @@ export default function Sidebar() {
             </ChannelLink>
           </ListItem>
         </ListWrapper>
-        <LogoutButton onClick={handleOnLogout}>
+        <LogoutButton onClick={handleOnLogOut}>
           <LogoutIcon />
           Logout
         </LogoutButton>

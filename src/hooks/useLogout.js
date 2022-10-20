@@ -1,17 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-import { fetchLogout } from "../api/authApi";
+import { logOut } from "../api/authApi";
 
-export default function useLogout() {
+export default function useLogOut() {
   const navigate = useNavigate();
 
   return async (event) => {
-    event.preventDefault();
-
     try {
-      await fetchLogout();
+      event.preventDefault();
 
-      localStorage.removeItem("authToken");
+      await logOut();
 
       navigate("/", { replace: true });
     } catch (error) {

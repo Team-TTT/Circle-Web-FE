@@ -7,7 +7,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
-import config from "./config";
+import config from ".";
 
 const firebaseConfig = {
   apiKey: config.REACT_APP_FIREBASE_API_KEY,
