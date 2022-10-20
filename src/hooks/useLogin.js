@@ -17,7 +17,7 @@ export default function useLogin() {
       const userData = await getUser({ email, displayName, photoURL }, token);
 
       if (userData) {
-        navigate("/console/projects", { rep: true });
+        navigate("/console/projects", { replace: true });
       }
     } catch (error) {
       navigate("/error");

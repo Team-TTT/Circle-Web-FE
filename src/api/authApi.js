@@ -10,7 +10,7 @@ export const getAuthUser = async () => {
     `${config.REACT_APP_SERVER_URL}/auth/users`,
     request
   );
-  const data = response.json();
+  const data = await response.json();
 
   return data;
 };
@@ -30,7 +30,7 @@ export const getUser = async (userData, token) => {
     `${config.REACT_APP_SERVER_URL}/auth/users`,
     request
   );
-  const data = response.json();
+  const data = await response.json();
 
   return data;
 };
@@ -41,5 +41,11 @@ export const logOut = async () => {
     credentials: "include",
   };
 
-  await fetch(`${config.REACT_APP_SERVER_URL}/auth/logout`, request);
+  const response = await fetch(
+    `${config.REACT_APP_SERVER_URL}/auth/logout`,
+    request
+  );
+  const result = await response.json();
+
+  return result;
 };

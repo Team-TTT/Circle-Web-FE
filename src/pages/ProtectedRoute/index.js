@@ -2,23 +2,23 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function ProtectedRoute() {
-  const getCookie = (cookieName) => {
+  const checkSessionCookie = (cookieName) => {
     const name = `${cookieName}=`;
     const decodedCookies = decodeURIComponent(document.cookie);
     const cookies = decodedCookies.split("; ");
 
-    let matchedCookie = "";
+    let isCookieMatched = false;
 
     cookies.forEach((value) => {
       if (value.indexOf(name) === 0) {
-        matchedCookie = value.substring(name.length);
+        isCookieMatched = true;
       }
     });
 
-    return matchedCookie;
+    return isCookieMatched;
   };
 
-  const isAuthUser = getCookie("session");
+  const isAuthUser = checkSessionCookie("session");
 
   if (!isAuthUser) {
     return <Navigate to="/" replace />;
