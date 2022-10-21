@@ -27,14 +27,14 @@ export default function ToastMessage({
 
   return (
     <Portal id="potal-toast">
-      <Container color={color}>
-        <Wrapper>{message}</Wrapper>
-      </Container>
+      <Wrapper color={color}>
+        <StyledToast>{message}</StyledToast>
+      </Wrapper>
     </Portal>
   );
 }
 
-const Container = styled.div`
+const Wrapper = styled.div`
   position: fixed;
   top: 12px;
   right: 12px;
@@ -71,7 +71,7 @@ const Container = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
+const StyledToast = styled.div`
   align-content: center;
   margin-top: 0.2rem;
   font-weight: bold;
