@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { AiOutlineClose } from "react-icons/ai";
 
-import Portal from "./Portal";
+import Portal from "../Portal";
 import theme from "../../../config/constants/theme";
 
 export default function Modal({ children, isOpen, setIsOpen }) {
@@ -20,7 +20,7 @@ export default function Modal({ children, isOpen, setIsOpen }) {
   };
 
   return (
-    <Portal>
+    <Portal id="portal-modal">
       <Container onClick={handleOuterClick}>
         <Wrapper>
           <CloseButton onClick={() => setIsOpen(false)}>
