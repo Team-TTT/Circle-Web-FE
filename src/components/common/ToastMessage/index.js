@@ -3,9 +3,8 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import Portal from "../Portal";
+import DEFAULT_TIME_OUT from "../../../config/constants";
 import theme from "../../../config/constants/theme";
-
-const DEFAULT_TIME_OUT = 4000;
 
 export default function ToastMessage({
   message,
@@ -16,7 +15,7 @@ export default function ToastMessage({
   useEffect(() => {
     const removeToast = setTimeout(() => {
       setSendToast(false);
-    }, DEFAULT_TIME_OUT);
+    }, DEFAULT_TIME_OUT.TOAST);
 
     return () => clearTimeout(removeToast);
   }, [setSendToast]);
