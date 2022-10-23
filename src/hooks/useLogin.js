@@ -13,12 +13,17 @@ export default function useLogin() {
       const authData = await signInWithGoogle();
       const token = await authData.user.getIdToken();
 
-      const { email, displayName, photoURL } = authData.user;
-      const userData = await getUser({ email, displayName, photoURL }, token);
+      const { email, displayName, photoURL, uid } = authData.user;
+      // const userData = await getUser(
+      //   { email, displayName, photoURL, uid },
+      //   token
+      // );
 
-      if (userData) {
-        navigate("/console/projects", { replace: true });
-      }
+      await getUser({ email, displayName, photoURL, uid }, token);
+
+      // const { projects } = userData;
+
+      navigate("/console/projects", { replace: true });
     } catch (error) {
       navigate("/error");
     }

@@ -1,21 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { MdOutlineTrackChanges, MdOutlineChat } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
 import useLogout from "../../hooks/useLogout";
 import theme from "../../config/constants/theme";
-import testImg from "../../assets/images/app1.png";
+import defaultProfile from "../../assets/images/app1.png";
 
-export default function Sidebar() {
+export default function Sidebar({ authUserData }) {
+  // const [authUserData] = useOutletContext();
   const handleOnLogOut = useLogout();
+  console.log(authUserData);
+
+  const { displayName, photoUrl } = authUserData;
 
   return (
     <Container>
       <UserWrapper>
-        <UserImage alt="profile-img" src={testImg} />
-        <UserEmail>email</UserEmail>
+        <UserImage alt="profile-img" src={photoUrl || defaultProfile} />
+        <UserEmail>{`${displayName} 님`}</UserEmail>
       </UserWrapper>
       <SideWrapper>
         <ListWrapper>
@@ -71,8 +76,12 @@ const UserImage = styled.img`
 `;
 
 const UserEmail = styled.span`
-  padding-left: 2vw;
-  font-size: 30px;
+  padding-left: 1vw;
+  font-size: 18px;
+  max-width: 130px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const SideWrapper = styled.div`
@@ -170,3 +179,7 @@ const LogoutIcon = styled(RiLogoutBoxLine)`
   font-size: 28px;
   cursor: pointer;
 `;
+
+Sidebar.propTypes = {
+  authUserData: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};

@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
+// import { getAuthUser } from "../../api/authApi";
+import checkSessionCookie from "../../utils/checkSessionCookie";
+// import { auth } from "../../config/firebaseConfig";
+
 export default function ProtectedRoute() {
-  const checkSessionCookie = (cookieName) => {
-    const name = `${cookieName}=`;
-    const decodedCookies = decodeURIComponent(document.cookie);
-    const cookies = decodedCookies.split("; ");
+  const [authUserData, setAuthUserData] = useState({});
+  // console.log(authUserData);
 
-    let isCookieMatched = false;
+  // useEffect(() => {
+  //   const fetchAuthUserData = async () => {
+  //     const data = await getAuthUser();
 
-    cookies.forEach((value) => {
-      if (value.indexOf(name) === 0) {
-        isCookieMatched = true;
-      }
-    });
+  //     setAuthUserData(data);
+  //   };
 
-    return isCookieMatched;
-  };
+  //   fetchAuthUserData();
+  // }, []);
 
   const isAuthUser = checkSessionCookie("session");
 
@@ -24,5 +25,5 @@ export default function ProtectedRoute() {
     return <Navigate to="/" replace />;
   }
 
-  return <Outlet />;
+  return <Outlet context={[authUserData, setAuthUserData]} />;
 }
