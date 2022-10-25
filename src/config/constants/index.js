@@ -8,6 +8,14 @@ export const MESSAGE = {
   PROJECT_SUCCESS_EDIT: "수정 되었습니다!",
   PROJECT_SUCCESS_DELETE: "삭제 되었습니다!",
   PROJECT_FAIL: "문제가 발생했습니다. 다시 시도해주세요.",
+  BAD_REQUEST: "잘못된 접근입니다.",
+};
+
+export const FORM = {
+  CREATE: "create",
+  CREATE_TITLE: "새로운 프로젝트 이름",
+  EDIT: "edit",
+  EDIT_TITLE: "프로젝트 이름 수정",
 };
 
 export const PROJECT_GUIDE_INFO =

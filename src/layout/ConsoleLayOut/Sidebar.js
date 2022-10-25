@@ -76,8 +76,8 @@ const UserImage = styled.img`
 
 const UserName = styled.span`
   padding-left: 1vw;
-  font-size: 18px;
   max-width: 130px;
+  font-size: 18px;
   white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
