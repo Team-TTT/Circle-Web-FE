@@ -10,22 +10,21 @@ import theme from "../../config/constants/theme";
 import defaultProfile from "../../assets/images/app1.png";
 
 export default function Sidebar({ authUserData }) {
-  // const [authUserData] = useOutletContext();
   const handleOnLogOut = useLogout();
-  console.log(authUserData);
 
-  const { displayName, photoUrl } = authUserData;
+  const { displayName, projects, photoUrl } = authUserData;
+  const initialProjectId = !projects?.length ? "new" : projects[0]._id;
 
   return (
     <Container>
       <UserWrapper>
         <UserImage alt="profile-img" src={photoUrl || defaultProfile} />
-        <UserEmail>{`${displayName} 님`}</UserEmail>
+        <UserName>{`${displayName} 님`}</UserName>
       </UserWrapper>
       <SideWrapper>
         <ListWrapper>
           <ListItem>
-            <ProjectLink to="/console/projects/:projectId">
+            <ProjectLink to={`/console/projects/${initialProjectId}`}>
               <SettingIcon />
               버튼 설치 및 설정
             </ProjectLink>
@@ -75,7 +74,7 @@ const UserImage = styled.img`
   height: 60px;
 `;
 
-const UserEmail = styled.span`
+const UserName = styled.span`
   padding-left: 1vw;
   font-size: 18px;
   max-width: 130px;

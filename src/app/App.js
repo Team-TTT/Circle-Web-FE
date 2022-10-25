@@ -4,10 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import HomeLayOut from "../layout/HomeLayOut";
 import HomePage from "../pages/HomePage";
 import GuidePage from "../pages/GuidePage";
-// import ProtectedRoute from "../pages/ProtectedRoute";
 import ConsoleLayOut from "../layout/ConsoleLayOut";
 import ProjectsPage from "../pages/ProjectsPage";
-import ProjectDetailPage from "../pages/ProjectDetailPage";
 import ChannelsPage from "../pages/ChannelsPage";
 import ChannelDetailPage from "../pages/ChannelDetailPage";
 import ErrorPage from "../pages/ErrorPage";
@@ -20,17 +18,16 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="guide" element={<GuidePage />} />
       </Route>
-      {/* <Route element={<ProtectedRoute />}> */}
       <Route path="console" element={<ConsoleLayOut />}>
-        <Route path="projects" element={<ProjectsPage />}>
-          <Route path=":projectId" element={<ProjectDetailPage />}>
+        <Route path="projects">
+          <Route path=":projectId">
+            <Route index element={<ProjectsPage />} />
             <Route path="channels" element={<ChannelsPage />}>
               <Route path=":channelId" element={<ChannelDetailPage />} />
             </Route>
           </Route>
         </Route>
       </Route>
-      {/* </Route> */}
       <Route path="/error" element={<ErrorPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

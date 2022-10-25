@@ -1,25 +1,17 @@
 import React from "react";
-import { Link, useOutletContext, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { AiOutlineBell } from "react-icons/ai";
 import { FiExternalLink } from "react-icons/fi";
+
+import { PROJECT_GUIDE_INFO } from "../../config/constants";
 import theme from "../../config/constants/theme";
 
-export default function ProjectDetailPage() {
-  const [authUserData] = useOutletContext();
-  const { projectId } = useParams();
-
-  const text =
-    "      자세한 사용 방법은 우측의 '사용 가이드 문서' 링크를 통해 확인하실 수 있습니다.\n\n아래의 스크립트에 프로젝트 ID와 secret-key를 입력한 후, 스크립트 전체를 복사하여 사용하시는 html의 <body> Tag 내부 최하단에 붙혀 넣어주세요.";
-
-  if (!projectId) {
-    return <StyledHeading>생성된 프로젝트가 없습니다</StyledHeading>;
+export default function ProjectDetailPage({ currentProject }) {
+  if (!currentProject?._id) {
+    return <p>프로젝트 불러오는중...</p>;
   }
-
-  const { projects } = authUserData;
-  const currentProject = projects.find((project) => {
-    return project._id === projectId;
-  });
 
   return (
     <>
@@ -39,7 +31,7 @@ export default function ProjectDetailPage() {
       </ConfigContainer>
       <InfoContainer>
         <BellIcon />
-        <StyledInfo>{text}</StyledInfo>
+        <StyledInfo>{PROJECT_GUIDE_INFO}</StyledInfo>
       </InfoContainer>
       <InfoContainer>
         <StyledCode>코드 스니펫</StyledCode>
@@ -61,11 +53,11 @@ const KeyContainer = styled.div`
 
 const KeyWrapper = styled.div`
   display: flex;
-  background-color: ${theme.lightGray};
-  border-radius: 5px;
+  align-items: center;
   width: 324px;
   padding: 12px;
-  align-items: center;
+  border-radius: 5px;
+  background-color: ${theme.lightGray};
   font-size: 18px;
 `;
 
@@ -77,35 +69,28 @@ const GuideLink = styled(Link)`
   height: 46px;
   padding: 2vmin;
   border-radius: 5px;
-  font-size: 18px;
-  color: ${theme.black};
   background-color: ${theme.lightGray};
   text-decoration: none;
+  font-size: 18px;
+  color: ${theme.black};
   cursor: pointer;
 `;
 
-const StyledHeading = styled.h1`
-  margin-top: 100px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 50px;
-`;
-
 const InfoContainer = styled.div`
-  border: 1px solid black;
   margin-bottom: 30px;
+  border: 1px solid black;
 `;
 
 const StyledInfo = styled.p`
+  padding: 18px;
   font-size: 18px;
   white-space: pre-wrap;
-  padding: 18px;
 `;
 
 const StyledCode = styled.p`
+  padding: 18px;
   font-size: 18px;
   white-space: pre-wrap;
-  padding: 18px;
 `;
 
 const BellIcon = styled(AiOutlineBell)`
@@ -117,3 +102,7 @@ const BellIcon = styled(AiOutlineBell)`
 const LinkIcon = styled(FiExternalLink)`
   font-size: 30px;
 `;
+
+ProjectDetailPage.propTypes = {
+  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};

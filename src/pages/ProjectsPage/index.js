@@ -1,43 +1,48 @@
-import React, { useEffect } from "react";
-import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import useModal from "../../hooks/useModal";
-import ProjectForm from "../../components/project/ProjectForm";
 import ProjectHeader from "../../components/project/ProjectHeader";
 import ProjectDetailPage from "../ProjectDetailPage";
+import { getProject } from "../../api/projectApi";
 import theme from "../../config/constants/theme";
 
 export default function ProjectsPage() {
-  const [authUserData] = useOutletContext();
-  const navigate = useNavigate();
-  const { projectId } = useParams();
-  const { projects } = authUserData;
+  const [currentProject, setCurrentProject] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [Modal, toggleModal] = useModal(!projects?.length);
+  const { projectId } = useParams();
 
   useEffect(() => {
-    if (projectId) {
-      navigate(`/console/projects/${projectId}`, { replace: true });
+    const fetchGetProject = async (id) => {
+      const data = await getProject(id);
+
+      if (data?._id) {
+        setCurrentProject(data);
+      }
+
+      setIsLoading(false);
+    };
+
+    if (projectId === "new") {
+      return;
     }
 
-    // if (projects?.length > 0) {
-    //   const projectId = projects[0]._id;
-
-    //   navigate(`/console/projects/${projectId}`, { replace: true });
-    // }
-  }, [navigate, projectId]);
+    fetchGetProject(projectId);
+  }, [projectId]);
 
   return (
     <Container>
-      <Modal>
-        <ProjectForm handleModal={toggleModal} />
-      </Modal>
-
-      <ProjectHeader handleModal={toggleModal} />
-
+      <ProjectHeader
+        currentProject={currentProject}
+        setCurrentProject={setCurrentProject}
+      />
       <ProjectMain>
-        <ProjectDetailPage />
+        {!isLoading && projectId === "new" ? (
+          <StyledHeading>생성된 프로젝트가 없습니다</StyledHeading>
+        ) : (
+          <ProjectDetailPage currentProject={currentProject} />
+        )}
       </ProjectMain>
     </Container>
   );
@@ -52,10 +57,18 @@ const Container = styled.section`
 
 const ProjectMain = styled.main`
   width: 1000px;
-  min-height: 700px;
-  padding: 60px;
+  height: 100%;
+  max-height: 800px;
   margin-top: 100px;
+  padding: 60px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   background-color: ${theme.gray};
   border: none;
+`;
+
+const StyledHeading = styled.h1`
+  margin-top: 100px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
 `;

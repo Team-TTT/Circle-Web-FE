@@ -1,36 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getAuthUser } from "../../api/authApi";
 
 import Sidebar from "./Sidebar";
+import { getAuthUser } from "../../api/authApi";
 
 export default function ConsoleLayOut() {
   const [authUserData, setAuthUserData] = useState({});
+  const [projects, setProjects] = useState([]);
 
-  // 여기서 분기처리 해보기
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchAuthUserData = async () => {
-      const data = await getAuthUser();
+      try {
+        const data = await getAuthUser();
 
-      setAuthUserData(data);
+        setAuthUserData(data);
+        setProjects(data.projects);
+      } catch (error) {
+        navigate("/error");
+      }
     };
 
     fetchAuthUserData();
-  }, [setAuthUserData]);
+  }, [navigate]);
 
   if (!authUserData?.email) {
-    return (
-      <div>
-        <h1>로딩중입니다...</h1>
-      </div>
-    );
+    return <StyledLoading>로딩중입니다...</StyledLoading>;
   }
 
   return (
     <Container>
-      <Sidebar authUserData={authUserData} setAuthUserData={setAuthUserData} />
-      <Outlet context={[authUserData, setAuthUserData]} />
+      <Sidebar authUserData={authUserData} />
+      <Outlet context={[projects, setProjects]} />
     </Container>
   );
 }
@@ -39,4 +42,12 @@ const Container = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+`;
+
+const StyledLoading = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 60px;
+  transform: translate(-50%, -50%);
 `;

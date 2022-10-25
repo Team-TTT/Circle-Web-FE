@@ -1,13 +1,11 @@
 import React from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
-// import { MdOutlineArrowDropDownCircle } from "react-icons/md";
+import PropTypes from "prop-types";
 
-export default function ProjectHeaderDropdown() {
-  const [authUserData] = useOutletContext();
+export default function ProjectHeaderDropdown({ currentProject }) {
+  const [projects] = useOutletContext();
   const navigate = useNavigate();
-
-  const { projects } = authUserData;
 
   if (!projects?.length) {
     return <StyledSelect />;
@@ -16,6 +14,8 @@ export default function ProjectHeaderDropdown() {
   return (
     <Container>
       <StyledSelect
+        key={currentProject._id}
+        defaultValue={currentProject._id}
         onChange={(event) => {
           navigate(`/console/projects/${event.target.value}`);
         }}
@@ -43,3 +43,7 @@ const StyledSelect = styled.select`
   border-radius: 5px;
   font-size: 22px;
 `;
+
+ProjectHeaderDropdown.propTypes = {
+  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+};
