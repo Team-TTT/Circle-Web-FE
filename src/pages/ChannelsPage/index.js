@@ -10,9 +10,9 @@ import styled from "styled-components";
 
 import theme from "../../config/constants/theme";
 import channelApi from "../../api/channelApi";
-import Create from "../../components/channel/Create";
-import Edit from "../../components/channel/Edit";
-import Delete from "../../components/channel/Delete";
+import ChanelCreate from "../../components/channel/ChanelCreate";
+import ChanelEdit from "../../components/channel/ChanelEdit";
+import ChanelDelete from "../../components/channel/ChanelDelete";
 import { CHANNEL } from "../../config/constants";
 import useModal from "../../hooks/useModal";
 
@@ -63,12 +63,14 @@ export default function ChannelsPage() {
 
   const renderModalItem = () => {
     if (action.type === CHANNEL.CREATE) {
-      return <Create setDoUpdate={setDoUpdate} toggleModal={toggleModal} />;
+      return (
+        <ChanelCreate setDoUpdate={setDoUpdate} toggleModal={toggleModal} />
+      );
     }
 
     if (action.type === CHANNEL.EDIT) {
       return (
-        <Edit
+        <ChanelEdit
           channelInfo={action.payload}
           setDoUpdate={setDoUpdate}
           toggleModal={toggleModal}
@@ -78,7 +80,7 @@ export default function ChannelsPage() {
 
     if (action.type === CHANNEL.DELETE) {
       return (
-        <Delete
+        <ChanelDelete
           channelInfo={action.payload}
           setDoUpdate={setDoUpdate}
           toggleModal={toggleModal}

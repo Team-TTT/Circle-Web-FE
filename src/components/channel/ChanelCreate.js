@@ -5,7 +5,7 @@ import ChannelForm from "./ChannelForm";
 import channelApi from "../../api/channelApi";
 import useChannelForm from "../../hooks/useChannelForm";
 
-export default function Create({ setDoUpdate, toggleModal }) {
+export default function ChanelCreate({ setDoUpdate, toggleModal }) {
   const [formData, handleFormData] = useChannelForm();
 
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function Create({ setDoUpdate, toggleModal }) {
   );
 }
 
-Create.propTypes = {
+ChanelCreate.propTypes = {
   setDoUpdate: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

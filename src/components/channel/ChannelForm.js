@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ButtonWrapper } from "./Delete";
+import { ButtonWrapper } from "./ChanelDelete";
 import CustomButton from "../shared/CustomButton";
 import CustomInput from "./CustomInput";
 

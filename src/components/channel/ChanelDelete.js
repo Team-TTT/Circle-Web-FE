@@ -5,7 +5,11 @@ import PropTypes from "prop-types";
 import theme from "../../config/constants/theme";
 import api from "../../api/channelApi";
 
-export default function Delete({ channelInfo, setDoUpdate, toggleModal }) {
+export default function ChanelDelete({
+  channelInfo,
+  setDoUpdate,
+  toggleModal,
+}) {
   const { _id: channelId } = channelInfo;
   const { projectId } = useParams();
   const navigate = useNavigate();
@@ -31,7 +35,7 @@ export default function Delete({ channelInfo, setDoUpdate, toggleModal }) {
   );
 }
 
-Delete.propTypes = {
+ChanelDelete.propTypes = {
   channelInfo: PropTypes.shape({
     _id: PropTypes.string,
   }).isRequired,
