@@ -139,7 +139,7 @@ const SubmitIcon = styled(BsCheckLg)`
   &:hover {
     background-color: ${theme.blue};
     color: ${theme.white};
-    @include transition(all 1s ease);
+    transition: all 1s ease;
   }
 `;
 

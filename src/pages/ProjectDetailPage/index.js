@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 import { AiOutlineBell } from "react-icons/ai";
 import { FiExternalLink } from "react-icons/fi";
 
-import { PROJECT_GUIDE_INFO } from "../../config/constants";
+import { PROJECT_INFO } from "../../config/constants";
 import theme from "../../config/constants/theme";
 
 export default function ProjectDetailPage({ currentProject }) {
   if (!currentProject?._id) {
-    return <p>프로젝트 불러오는중...</p>;
+    return <StyledLoading>프로젝트 불러오는중...</StyledLoading>;
   }
 
   return (
@@ -31,10 +31,11 @@ export default function ProjectDetailPage({ currentProject }) {
       </ConfigContainer>
       <InfoContainer>
         <BellIcon />
-        <StyledInfo>{PROJECT_GUIDE_INFO}</StyledInfo>
+        <StyledGuide>{PROJECT_INFO.LINK_TO_GUIDE}</StyledGuide>
+        <StyledDescription>{PROJECT_INFO.DESCRIPTION}</StyledDescription>
       </InfoContainer>
       <InfoContainer>
-        <StyledCode>코드 스니펫</StyledCode>
+        <StyledCode>{PROJECT_INFO.CODE_SNIPPET}</StyledCode>
       </InfoContainer>
     </>
   );
@@ -53,8 +54,8 @@ const KeyContainer = styled.div`
 
 const KeyWrapper = styled.div`
   display: flex;
-  align-items: center;
-  width: 324px;
+  justify-content: center;
+  min-width: 360px;
   padding: 12px;
   border-radius: 5px;
   background-color: ${theme.lightGray};
@@ -81,7 +82,14 @@ const InfoContainer = styled.div`
   border: 1px solid black;
 `;
 
-const StyledInfo = styled.p`
+const StyledGuide = styled.p`
+  padding: 19px 50px 5px;
+  font-size: 20px;
+  font-weight: bold;
+  white-space: pre-wrap;
+`;
+
+const StyledDescription = styled.p`
   padding: 18px;
   font-size: 18px;
   white-space: pre-wrap;
@@ -96,11 +104,19 @@ const StyledCode = styled.p`
 const BellIcon = styled(AiOutlineBell)`
   position: absolute;
   margin: 12px 12px;
-  font-size: 30px;
+  font-size: 34px;
 `;
 
 const LinkIcon = styled(FiExternalLink)`
   font-size: 30px;
+`;
+
+const StyledLoading = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 60px;
+  transform: translate(-50%, -50%);
 `;
 
 ProjectDetailPage.propTypes = {

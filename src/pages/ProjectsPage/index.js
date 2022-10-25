@@ -51,12 +51,12 @@ export default function ProjectsPage() {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  margin: 40px 40px;
+  margin: 40px;
   background-color: ${theme.skyBlue};
 `;
 
 const ProjectMain = styled.main`
-  width: 1000px;
+  width: 1200px;
   height: 100%;
   max-height: 800px;
   margin-top: 100px;
