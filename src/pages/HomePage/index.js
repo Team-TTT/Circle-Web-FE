@@ -1,11 +1,12 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FaLongArrowAltDown } from "react-icons/fa";
 
 import appImage1 from "../../assets/images/app2.png";
 import appImage2 from "../../assets/images/app3.png";
 import theme from "../../config/constants/theme";
+import checkSessionCookie from "../../utils/checkSessionCookie";
 
 export default function HomePage() {
   const handleScrollToDown = () => {
@@ -15,6 +16,12 @@ export default function HomePage() {
       behavior: "smooth",
     });
   };
+
+  const isAuthUser = checkSessionCookie("session");
+
+  if (isAuthUser) {
+    return <Navigate to="/console/projects" replace />;
+  }
 
   return (
     <Container>
