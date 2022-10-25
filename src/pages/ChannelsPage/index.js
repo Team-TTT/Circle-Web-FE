@@ -184,7 +184,6 @@ const TableWrapper = styled.div`
   width: 80%;
   padding: 50px;
   border-radius: 5px;
-  overflow: scroll;
 `;
 
 const Table = styled.table`

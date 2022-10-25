@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { StyledInput } from "../project/ProjectForm";
+import StyledInput from "../shared/StyledInput";
 
 export default function CustomInput({
   label = "",

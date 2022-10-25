@@ -27,7 +27,7 @@ export default function ConsoleLayOut() {
   }, [navigate]);
 
   if (!authUserData?.email) {
-    return <StyledLoading>로딩중입니다...</StyledLoading>;
+    return <StyledLoading>콘솔 페이지로 이동합니다!</StyledLoading>;
   }
 
   return (

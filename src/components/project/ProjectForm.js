@@ -5,12 +5,13 @@ import PropTypes from "prop-types";
 import { BsCheckLg } from "react-icons/bs";
 
 import { createProject, editProject } from "../../api/projectApi";
-import { DEFAULT_VALUES, MESSAGE } from "../../config/constants";
+import { DEFAULT_VALUES, MESSAGE, FORM } from "../../config/constants";
 import theme from "../../config/constants/theme";
+import StyledInput from "../shared/StyledInput";
 
 export default function ProjectForm({ formType, toggleModal, currentProject }) {
   const [titleInput, setTitleInput] = useState(
-    formType === "edit" ? currentProject.title : ""
+    formType === FORM.EDIT ? currentProject.title : ""
   );
 
   const [projects, setProjects] = useOutletContext();
@@ -59,7 +60,7 @@ export default function ProjectForm({ formType, toggleModal, currentProject }) {
   const handleSubmitForm = async (event) => {
     event.preventDefault();
 
-    if (formType === "edit") {
+    if (formType === FORM.EDIT) {
       await handleEditProject();
     } else {
       await handleCreateProject();
@@ -70,9 +71,7 @@ export default function ProjectForm({ formType, toggleModal, currentProject }) {
 
   return (
     <Container>
-      <h1>
-        {formType === "edit" ? "프로젝트 이름 수정" : "새로운 프로젝트 이름"}
-      </h1>
+      <h1>{formType === FORM.EDIT ? FORM.EDIT_TITLE : FORM.CREATE_TITLE}</h1>
       <form onSubmit={handleSubmitForm}>
         <InputContainer>
           <StyledInput
@@ -82,7 +81,9 @@ export default function ProjectForm({ formType, toggleModal, currentProject }) {
             onChange={(event) => setTitleInput(event.target.value)}
             maxLength={DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}
           />
-          <StyledText>15자 이내</StyledText>
+          <StyledText>
+            {`(${DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}자 이내)`}
+          </StyledText>
         </InputContainer>
         <StyledButton type="submit">
           <SubmitIcon />
@@ -103,21 +104,8 @@ const InputContainer = styled.div`
   margin-left: 68px;
 `;
 
-export const StyledInput = styled.input`
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  border: 1.5px solid ${theme.blue};
-  border-radius: 5px;
-  font-size: 18px;
-  ::placeholder {
-    color: palevioletred;
-  }
-`;
-
 const StyledText = styled.p`
-  display: inline;
-  padding-bottom: 40px;
+  font-size: 14px;
   text-align: right;
 `;
 
@@ -139,7 +127,7 @@ const SubmitIcon = styled(BsCheckLg)`
   &:hover {
     background-color: ${theme.blue};
     color: ${theme.white};
-    @include transition(all 1s ease);
+    transition: all 1s ease;
   }
 `;
 

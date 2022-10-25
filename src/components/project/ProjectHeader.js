@@ -55,19 +55,11 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
 
   return (
     <Container>
-      <StyledButton
-        type="button"
-        name="create"
-        onClick={(event) => handleModalOpen(event)}
-      >
+      <StyledButton type="button" name="create" onClick={handleModalOpen}>
         <AddIcon />
       </StyledButton>
       <ProjectHeaderDropdown currentProject={currentProject} />
-      <StyledButton
-        type="button"
-        name="edit"
-        onClick={(event) => handleModalOpen(event)}
-      >
+      <StyledButton type="button" name="edit" onClick={handleModalOpen}>
         <EditIcon />
       </StyledButton>
       <StyledButton>
@@ -111,7 +103,7 @@ const AddIcon = styled(MdAddCircle)`
   &:hover {
     background-color: ${theme.blue};
     color: ${theme.white};
-    @include transition(all 1s ease);
+    transition: all 1s ease;
   }
 `;
 
@@ -124,7 +116,7 @@ const EditIcon = styled(MdOutlineEdit)`
   &:hover {
     background-color: ${theme.blue};
     color: ${theme.white};
-    @include transition(all 1s ease);
+    transition: all 1s ease;
   }
 `;
 
@@ -137,7 +129,7 @@ const DeleteIcon = styled(MdOutlineDelete)`
   &:hover {
     background-color: ${theme.blue};
     color: ${theme.white};
-    @include transition(all 1s ease);
+    transition: all 1s ease;
   }
 `;
 
