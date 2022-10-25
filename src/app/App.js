@@ -7,7 +7,6 @@ import GuidePage from "../pages/GuidePage";
 import ConsoleLayOut from "../layout/ConsoleLayOut";
 import ProjectsPage from "../pages/ProjectsPage";
 import ChannelsPage from "../pages/ChannelsPage";
-import ChannelDetailPage from "../pages/ChannelDetailPage";
 import ErrorPage from "../pages/ErrorPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
@@ -22,9 +21,7 @@ export default function App() {
         <Route path="projects">
           <Route path=":projectId">
             <Route index element={<ProjectsPage />} />
-            <Route path="channels" element={<ChannelsPage />}>
-              <Route path=":channelId" element={<ChannelDetailPage />} />
-            </Route>
+            <Route path="channels" element={<ChannelsPage />} />
           </Route>
         </Route>
       </Route>

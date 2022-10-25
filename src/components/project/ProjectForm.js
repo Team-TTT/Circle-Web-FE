@@ -103,7 +103,7 @@ const InputContainer = styled.div`
   margin-left: 68px;
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   width: 300px;
   margin: 10px;
   padding: 10px;

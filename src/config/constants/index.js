@@ -12,3 +12,9 @@ export const MESSAGE = {
 
 export const PROJECT_GUIDE_INFO =
   "      자세한 사용 방법은 우측의 '사용 가이드 문서' 링크를 통해 확인하실 수 있습니다.\n\n아래의 스크립트에 프로젝트 ID와 secret-key를 입력한 후, 스크립트 전체를 복사하여 사용하시는 html의 <body> Tag 내부 최하단에 붙혀 넣어주세요.";
+
+export const CHANNEL = {
+  DELETE: "delete",
+  EDIT: "edit",
+  CREATE: "create",
+};
