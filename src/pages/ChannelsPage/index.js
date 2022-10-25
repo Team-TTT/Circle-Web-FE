@@ -26,13 +26,16 @@ export default function ChannelsPage() {
   const { projectId } = useParams();
   const navigate = useNavigate();
 
-  const { title: projectTitle } = projects.find(({ _id }) => _id === projectId);
-
   useEffect(() => {
     if (doUpdate) {
       const getChannelInfo = async () => {
         try {
+          if (!projectId || projectId === "new" || projectId === "undefined") {
+            navigate("/console/projects/new");
+          }
+
           const data = await channelApi.getChannel(projectId);
+
           setChannelInfos(data);
           setDoUpdate(false);
         } catch (error) {
@@ -43,6 +46,8 @@ export default function ChannelsPage() {
       getChannelInfo();
     }
   }, [navigate, projectId, doUpdate]);
+
+  const projectTitle = projects.find(({ _id }) => _id === projectId)?.title;
 
   const modalDispatch = ({ type, payload }) => {
     setAction({ type, payload });
