@@ -7,6 +7,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { createProject, editProject } from "../../api/projectApi";
 import { DEFAULT_VALUES, MESSAGE, FORM } from "../../config/constants";
 import theme from "../../config/constants/theme";
+import StyledInput from "../shared/StyledInput";
 
 export default function ProjectForm({ formType, toggleModal, currentProject }) {
   const [titleInput, setTitleInput] = useState(
@@ -101,19 +102,6 @@ const InputContainer = styled.div`
   display: flex;
   align-items: baseline;
   margin-left: 68px;
-`;
-
-const StyledInput = styled.input`
-  flex: 1;
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  border: 1.5px solid ${theme.blue};
-  border-radius: 5px;
-  font-size: 18px;
-  ::placeholder {
-    color: palevioletred;
-  }
 `;
 
 const StyledText = styled.p`

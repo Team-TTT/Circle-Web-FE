@@ -4,7 +4,9 @@ import Modal from "../components/common/Modal";
 export default function useModal(initialState = false) {
   const [isOpen, setIsOpen] = useState(initialState);
 
-  const toggleModal = () => setIsOpen(!isOpen);
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   const customModal = ({ children }) => {
     return (

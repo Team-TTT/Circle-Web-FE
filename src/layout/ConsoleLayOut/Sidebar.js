@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { MdOutlineTrackChanges, MdOutlineChat } from "react-icons/md";
@@ -14,6 +14,7 @@ export default function Sidebar({ authUserData }) {
 
   const { displayName, projects, photoUrl } = authUserData;
   const initialProjectId = !projects?.length ? "new" : projects[0]._id;
+  const { projectId } = useParams();
 
   return (
     <Container>
@@ -30,7 +31,7 @@ export default function Sidebar({ authUserData }) {
             </ProjectLink>
           </ListItem>
           <ListItem>
-            <ChannelLink to="/console/projects/:projectId/channels">
+            <ChannelLink to={`/console/projects/${projectId}/channels`}>
               <ChannelIcon />
               채널 관리
             </ChannelLink>

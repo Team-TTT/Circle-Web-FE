@@ -11,6 +11,12 @@ export const MESSAGE = {
   BAD_REQUEST: "잘못된 접근입니다.",
 };
 
+export const CHANNEL = {
+  DELETE: "delete",
+  EDIT: "edit",
+  CREATE: "create",
+};
+
 export const FORM = {
   CREATE: "create",
   CREATE_TITLE: "새로운 프로젝트 이름",
