@@ -31,10 +31,6 @@ const createChannel = async ({ projectId, payload }) => {
 
   const data = await response.json();
 
-  if (response.status >= 300) {
-    throw new Error(data.message);
-  }
-
   return [data, response];
 };
 

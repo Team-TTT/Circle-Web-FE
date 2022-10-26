@@ -6,7 +6,7 @@ import api from "../../api/channelApi";
 import ChannelForm from "./ChannelForm";
 import useChannelForm from "../../hooks/useChannelForm";
 
-export default function ChanelEdit({ channelInfo, setDoUpdate, toggleModal }) {
+export default function ChannelEdit({ channelInfo, setDoUpdate, toggleModal }) {
   const { title, description, isActive, _id: channelId } = channelInfo;
   const [formData, handleFormData] = useChannelForm(
     title,
@@ -38,7 +38,7 @@ export default function ChanelEdit({ channelInfo, setDoUpdate, toggleModal }) {
   );
 }
 
-ChanelEdit.propTypes = {
+ChannelEdit.propTypes = {
   channelInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

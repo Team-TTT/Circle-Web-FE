@@ -45,9 +45,9 @@ const Container = styled.div`
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 99;
   background-color: ${theme.modalBackGround};
   cursor: pointer;
+  z-index: 99;
 
   animation-name: fadeIn;
   animation-duration: 0.3s;

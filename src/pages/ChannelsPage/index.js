@@ -10,9 +10,9 @@ import styled from "styled-components";
 
 import theme from "../../config/constants/theme";
 import channelApi from "../../api/channelApi";
-import ChanelCreate from "../../components/channel/ChanelCreate";
-import ChanelEdit from "../../components/channel/ChanelEdit";
-import ChanelDelete from "../../components/channel/ChanelDelete";
+import ChanelCreate from "../../components/channel/ChannelCreate";
+import ChanelEdit from "../../components/channel/ChannelEdit";
+import ChanelDelete from "../../components/channel/ChannelDelete";
 import { CHANNEL } from "../../config/constants";
 import useModal from "../../hooks/useModal";
 
@@ -211,16 +211,16 @@ const Header = styled.thead`
 const TableRow = styled.tr``;
 
 const HeaderItem = styled.th`
+  padding-bottom: 10px;
   border-bottom: 1px solid black;
   font-size: 24px;
-  padding-bottom: 10px;
 `;
 
 const Body = styled.tbody``;
 
 const BodyItem = styled.td`
-  text-align: center;
   padding: 20px 0px;
+  text-align: center;
 `;
 
 const EditIcon = styled(FaEdit)`

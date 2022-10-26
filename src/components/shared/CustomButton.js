@@ -4,9 +4,9 @@ import theme from "../../config/constants/theme";
 const CustomButton = styled.button`
   width: 80px;
   height: 50px;
-  background-color: ${theme.skyBlue};
   border: none;
   border-radius: 5px;
+  background-color: ${theme.skyBlue};
   cursor: pointer;
 
   &:hover {

@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
+
 import ChannelForm from "./ChannelForm";
 import channelApi from "../../api/channelApi";
 import useChannelForm from "../../hooks/useChannelForm";
 
-export default function ChanelCreate({ setDoUpdate, toggleModal }) {
+export default function ChannelCreate({ setDoUpdate, toggleModal }) {
   const [formData, handleFormData] = useChannelForm();
 
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function ChanelCreate({ setDoUpdate, toggleModal }) {
   );
 }
 
-ChanelCreate.propTypes = {
+ChannelCreate.propTypes = {
   setDoUpdate: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

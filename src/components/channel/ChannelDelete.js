@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import theme from "../../config/constants/theme";
 import api from "../../api/channelApi";
 
-export default function ChanelDelete({
+export default function ChannelDelete({
   channelInfo,
   setDoUpdate,
   toggleModal,
@@ -35,7 +35,7 @@ export default function ChanelDelete({
   );
 }
 
-ChanelDelete.propTypes = {
+ChannelDelete.propTypes = {
   channelInfo: PropTypes.shape({
     _id: PropTypes.string,
   }).isRequired,
@@ -64,9 +64,9 @@ export const ButtonWrapper = styled.div`
 export const CustomButton = styled.button`
   width: 80px;
   height: 50px;
-  background-color: ${theme.skyBlue};
   border: none;
   border-radius: 5px;
+  background-color: ${theme.skyBlue};
   cursor: pointer;
 
   &:hover {

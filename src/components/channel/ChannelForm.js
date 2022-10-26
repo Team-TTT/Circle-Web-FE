@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { ButtonWrapper } from "./ChanelDelete";
+import { ButtonWrapper } from "./ChannelDelete";
 import CustomButton from "../shared/CustomButton";
 import CustomInput from "./CustomInput";
 
@@ -17,14 +17,14 @@ export default function ChannelForm({
 
   const isEmptyData = !title || !description;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (event) => {
+    event.preventDefault();
 
     if (isEmptyData) {
       return;
     }
 
-    handleOnSubmit(e);
+    handleOnSubmit(event);
   };
 
   return (
