@@ -1,14 +1,17 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import { Link, Navigate } from "react-router-dom";
-import { FaLongArrowAltDown } from "react-icons/fa";
+import styled from "styled-components";
+import { Navigate } from "react-router-dom";
 
+import DownIcon from "../../components/shared/DownIcon";
+import useLogin from "../../hooks/useLogin";
+import checkSessionCookie from "../../utils/checkSessionCookie";
+import theme from "../../config/constants/theme";
 import appImage1 from "../../assets/images/app2.png";
 import appImage2 from "../../assets/images/app3.png";
-import theme from "../../config/constants/theme";
-import checkSessionCookie from "../../utils/checkSessionCookie";
 
 export default function HomePage() {
+  const handleOnLogin = useLogin();
+
   const handleScrollToDown = () => {
     window.scrollTo({
       top: document.body.scrollHeight,
@@ -33,7 +36,7 @@ export default function HomePage() {
             지금 바로 시작하세요
           </Title>
         </TitleWrapper>
-        <StartProjectButton to="/console/projects">
+        <StartProjectButton type="button" onClick={handleOnLogin}>
           프로젝트 시작하기
         </StartProjectButton>
         <DownIcon onClick={handleScrollToDown} />
@@ -78,7 +81,7 @@ const Title = styled.h1`
   font-weight: 500;
 `;
 
-const StartProjectButton = styled(Link)`
+const StartProjectButton = styled.button`
   margin: 50px;
   padding: 10px;
   border: none;
@@ -88,24 +91,6 @@ const StartProjectButton = styled(Link)`
   color: ${theme.white};
   text-decoration: none;
   cursor: pointer;
-`;
-
-const iconAnimation = keyframes`
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(20px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-`;
-
-const DownIcon = styled(FaLongArrowAltDown)`
-  font-size: 48px;
-  cursor: pointer;
-  animation: ${iconAnimation} 2s ease infinite;
 `;
 
 const AppDescriptionWrapper = styled.section`

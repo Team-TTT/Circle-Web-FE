@@ -30,8 +30,8 @@ export default function ChannelsPage() {
     if (doUpdate) {
       const getChannelInfo = async () => {
         try {
-          if (!projectId || projectId === "new" || projectId === "undefined") {
-            navigate("/console/projects/new");
+          if (!projectId || projectId === "undefined") {
+            navigate("/console/projects");
           }
 
           const data = await channelApi.getChannel(projectId);

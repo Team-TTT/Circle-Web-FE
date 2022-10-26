@@ -21,9 +21,9 @@ export default function useLogin() {
       const { projects } = userData;
 
       if (!projects?.length) {
-        navigate("/console/projects/new", { replace: true });
+        navigate("/console/projects", { replace: true });
       } else {
-        const initialProjectId = projects[0]._id;
+        const initialProjectId = projects[0];
 
         navigate(`/console/projects/${initialProjectId}`, { replace: true });
       }

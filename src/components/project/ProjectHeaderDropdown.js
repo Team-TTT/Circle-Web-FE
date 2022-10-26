@@ -1,21 +1,23 @@
 import React from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
-export default function ProjectHeaderDropdown({ currentProject }) {
-  const [projects] = useOutletContext();
+export default function ProjectHeaderDropdown() {
+  const [projects, , , , isProjectLoaded] = useOutletContext();
+  const { projectId } = useParams();
   const navigate = useNavigate();
 
-  if (!projects?.length) {
+  if (!projects?.length || !isProjectLoaded || !projectId) {
     return <StyledSelect />;
   }
+
+  const initialOption = projects.find((project) => project?._id === projectId);
 
   return (
     <Container>
       <StyledSelect
-        key={currentProject._id}
-        defaultValue={currentProject._id}
+        key={initialOption?._id}
+        defaultValue={initialOption?._id}
         onChange={(event) => {
           navigate(`/console/projects/${event.target.value}`);
         }}
@@ -38,12 +40,8 @@ const Container = styled.div`
 
 const StyledSelect = styled.select`
   appearance: none;
-  width: 220px;
+  width: 240px;
   padding: 6px;
   border-radius: 5px;
   font-size: 22px;
 `;
-
-ProjectHeaderDropdown.propTypes = {
-  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
-};

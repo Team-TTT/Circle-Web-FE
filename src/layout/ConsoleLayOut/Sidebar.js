@@ -10,11 +10,11 @@ import theme from "../../config/constants/theme";
 import defaultProfile from "../../assets/images/app1.png";
 
 export default function Sidebar({ authUserData }) {
+  const { projectId } = useParams();
+
   const handleOnLogOut = useLogout();
 
-  const { displayName, projects, photoUrl } = authUserData;
-  const initialProjectId = !projects?.length ? "new" : projects[0]._id;
-  const { projectId } = useParams();
+  const { displayName, photoUrl } = authUserData;
 
   return (
     <Container>
@@ -25,7 +25,7 @@ export default function Sidebar({ authUserData }) {
       <SideWrapper>
         <ListWrapper>
           <ListItem>
-            <ProjectLink to={`/console/projects/${initialProjectId}`}>
+            <ProjectLink to={`/console/projects/${projectId || ""}`}>
               <SettingIcon />
               버튼 설치 및 설정
             </ProjectLink>

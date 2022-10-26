@@ -3,11 +3,15 @@ import { Outlet, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import Sidebar from "./Sidebar";
+import useToast from "../../hooks/useToast";
 import { getAuthUser } from "../../api/authApi";
 
 export default function ConsoleLayOut() {
   const [authUserData, setAuthUserData] = useState({});
   const [projects, setProjects] = useState([]);
+  const [isProjectLoaded, setIsProjectLoaded] = useState(false);
+
+  const [Toast, sendToast, isToastSend] = useToast();
 
   const navigate = useNavigate();
 
@@ -26,14 +30,23 @@ export default function ConsoleLayOut() {
     fetchAuthUserData();
   }, [navigate]);
 
-  if (!authUserData?.email) {
+  if (!authUserData?._id) {
     return <StyledLoading>콘솔 페이지로 이동합니다!</StyledLoading>;
   }
 
   return (
     <Container>
+      {isToastSend && isProjectLoaded && <Toast />}
       <Sidebar authUserData={authUserData} />
-      <Outlet context={[projects, setProjects]} />
+      <Outlet
+        context={[
+          projects,
+          setProjects,
+          sendToast,
+          setIsProjectLoaded,
+          isProjectLoaded,
+        ]}
+      />
     </Container>
   );
 }

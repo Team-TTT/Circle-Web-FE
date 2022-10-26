@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { AiOutlineBell } from "react-icons/ai";
@@ -9,20 +9,22 @@ import { PROJECT_INFO } from "../../config/constants";
 import theme from "../../config/constants/theme";
 
 export default function ProjectDetailPage({ currentProject }) {
-  if (!currentProject?._id) {
-    return <StyledLoading>프로젝트 불러오는중...</StyledLoading>;
-  }
+  const [, , , , isProjectLoaded] = useOutletContext();
+
+  const projectInfo = isProjectLoaded
+    ? { id: currentProject._id, key: currentProject.secretKey }
+    : { id: "가져오는 중...", key: "생성중..." };
 
   return (
     <>
       <ConfigContainer>
         <KeyContainer>
           <p>프로젝트 ID</p>
-          <KeyWrapper>{currentProject._id}</KeyWrapper>
+          <KeyWrapper>{projectInfo.id}</KeyWrapper>
         </KeyContainer>
         <KeyContainer>
           <p>Secret-key</p>
-          <KeyWrapper>{currentProject.secretKey}</KeyWrapper>
+          <KeyWrapper>{projectInfo.key}</KeyWrapper>
         </KeyContainer>
         <GuideLink to="/guide">
           <LinkIcon />
@@ -48,9 +50,7 @@ const ConfigContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const KeyContainer = styled.div`
-  border: none;
-`;
+const KeyContainer = styled.div``;
 
 const KeyWrapper = styled.div`
   display: flex;
@@ -109,14 +109,6 @@ const BellIcon = styled(AiOutlineBell)`
 
 const LinkIcon = styled(FiExternalLink)`
   font-size: 30px;
-`;
-
-const StyledLoading = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  font-size: 60px;
-  transform: translate(-50%, -50%);
 `;
 
 ProjectDetailPage.propTypes = {
