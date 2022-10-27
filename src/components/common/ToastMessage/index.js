@@ -48,8 +48,8 @@ const Wrapper = styled.div`
   cursor: auto;
 
   animation-name: toast-in-right, fade-out;
-  animation-delay: 0s, ${DEFAULT_VALUES.TOAST_TIMEOUT - 1000}ms;
-  animation-duration: 0.7s, 1s;
+  animation-delay: 0s, ${DEFAULT_VALUES.TOAST_TIMEOUT - 400}ms;
+  animation-duration: 0.7s, 0.5s;
 
   @keyframes toast-in-right {
     from {
