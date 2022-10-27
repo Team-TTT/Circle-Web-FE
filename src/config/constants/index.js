@@ -1,14 +1,16 @@
 export const DEFAULT_VALUES = {
-  TOAST_TIMEOUT: 4000,
+  TOAST_TIMEOUT: 2000,
   PROJECT_TITLE_MAX_LENGTH: 15,
 };
 
 export const MESSAGE = {
-  PROJECT_SUCCESS_CREATE: "생성 되었습니다!",
+  PROJECT_SUCCESS_CREATE: "새 프로젝트가 생성 되었습니다!",
   PROJECT_SUCCESS_EDIT: "수정 되었습니다!",
   PROJECT_SUCCESS_DELETE: "삭제 되었습니다!",
-  PROJECT_FAIL: "문제가 발생했습니다. 다시 시도해주세요.",
+  REQUEST_FAILED: "문제가 발생했습니다. 다시 시도해주세요.",
   BAD_REQUEST: "잘못된 접근입니다.",
+  INVALID_INPUT: "유효하지 않은 입력입니다.",
+  NO_PROJECT: "아직 프로젝트를 생성하시지 않았네요!",
 };
 
 export const CHANNEL = {

@@ -3,20 +3,26 @@ import React, { useState } from "react";
 import ToastMessage from "../components/common/ToastMessage";
 
 export default function useToast(initialState = false) {
-  const [sendToast, setSendToast] = useState(initialState);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastColor, setToastColor] = useState("");
+  const [isToastDisplayed, setIsToastDisplayed] = useState(initialState);
 
-  const handleSendToast = () => setSendToast(true);
+  const handleSendToast = (message, color) => {
+    setToastMessage(message);
+    setToastColor(color);
+    setIsToastDisplayed(true);
+  };
 
-  const customToast = ({ message, color }) => {
+  const customToast = () => {
     return (
       <ToastMessage
-        message={message}
-        color={color}
-        sendToast={sendToast}
-        setSendToast={setSendToast}
+        message={toastMessage}
+        color={toastColor}
+        isToastDisplayed={isToastDisplayed}
+        setIsToastDisplayed={setIsToastDisplayed}
       />
     );
   };
 
-  return [customToast, handleSendToast];
+  return [customToast, handleSendToast, isToastDisplayed];
 }

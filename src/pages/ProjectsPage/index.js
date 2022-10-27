@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 
 import ProjectHeader from "../../components/project/ProjectHeader";
+import NewProjectPage from "../NewProjectPage";
 import ProjectDetailPage from "../ProjectDetailPage";
 import { getProject } from "../../api/projectApi";
 import theme from "../../config/constants/theme";
 
 export default function ProjectsPage() {
   const [currentProject, setCurrentProject] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
 
+  const [, , , setIsProjectLoaded, isProjectLoaded] = useOutletContext();
   const { projectId } = useParams();
 
   useEffect(() => {
+    if (!projectId) {
+      setIsProjectLoaded(true);
+
+      return;
+    }
+
+    setIsProjectLoaded(false);
+
     const fetchGetProject = async (id) => {
       const data = await getProject(id);
 
@@ -21,15 +30,11 @@ export default function ProjectsPage() {
         setCurrentProject(data);
       }
 
-      setIsLoading(false);
+      setIsProjectLoaded(true);
     };
 
-    if (projectId === "new") {
-      return;
-    }
-
     fetchGetProject(projectId);
-  }, [projectId]);
+  }, [projectId, setIsProjectLoaded]);
 
   return (
     <Container>
@@ -38,8 +43,8 @@ export default function ProjectsPage() {
         setCurrentProject={setCurrentProject}
       />
       <ProjectMain>
-        {!isLoading && projectId === "new" ? (
-          <StyledHeading>생성된 프로젝트가 없습니다</StyledHeading>
+        {isProjectLoaded && !projectId ? (
+          <NewProjectPage />
         ) : (
           <ProjectDetailPage currentProject={currentProject} />
         )}
@@ -64,11 +69,4 @@ const ProjectMain = styled.main`
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   background-color: ${theme.gray};
   border: none;
-`;
-
-const StyledHeading = styled.h1`
-  margin-top: 100px;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 50px;
 `;

@@ -8,13 +8,13 @@ import ProjectHeaderDropdown from "./ProjectHeaderDropdown";
 import ProjectForm from "./ProjectForm";
 import useModal from "../../hooks/useModal";
 import { deleteProject } from "../../api/projectApi";
-import { MESSAGE } from "../../config/constants";
+import { FORM, MESSAGE } from "../../config/constants";
 import theme from "../../config/constants/theme";
 
 export default function ProjectHeader({ currentProject, setCurrentProject }) {
   const [formType, setFormType] = useState("");
 
-  const [projects, setProjects] = useOutletContext();
+  const [projects, setProjects, sendToast] = useOutletContext();
   const { projectId } = useParams();
   const navigate = useNavigate();
 
@@ -22,17 +22,21 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
 
   const handleDeleteProject = async () => {
     try {
+      if (!projectId) {
+        sendToast(MESSAGE.BAD_REQUEST);
+
+        return;
+      }
+
       const response = await deleteProject(projectId);
 
       if (response.result) {
-        alert(MESSAGE.PROJECT_SUCCESS_DELETE);
-
-        const filteredProjects = projects.filter((project) => {
-          return project._id !== projectId;
-        });
+        const filteredProjects = projects.filter(
+          (project) => project._id !== projectId
+        );
 
         if (!filteredProjects?.length) {
-          navigate("/console/projects/new", { replace: true });
+          navigate("/console/projects", { replace: true });
         } else {
           navigate(`/console/projects/${filteredProjects[0]._id}`, {
             replace: true,
@@ -40,6 +44,9 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
         }
 
         setProjects(filteredProjects);
+        sendToast(MESSAGE.PROJECT_SUCCESS_DELETE);
+      } else {
+        sendToast(MESSAGE.REQUEST_FAILED);
       }
     } catch (error) {
       navigate("/error");
@@ -49,17 +56,25 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
   const handleModalOpen = (event) => {
     event.preventDefault();
 
-    setFormType(event.currentTarget.name);
+    const { name: eventType } = event.currentTarget;
+
+    if (!projectId && eventType === FORM.EDIT) {
+      sendToast(MESSAGE.BAD_REQUEST);
+
+      return;
+    }
+
+    setFormType(eventType);
     toggleModal();
   };
 
   return (
     <Container>
-      <StyledButton type="button" name="create" onClick={handleModalOpen}>
+      <StyledButton type="button" name={FORM.CREATE} onClick={handleModalOpen}>
         <AddIcon />
       </StyledButton>
-      <ProjectHeaderDropdown currentProject={currentProject} />
-      <StyledButton type="button" name="edit" onClick={handleModalOpen}>
+      <ProjectHeaderDropdown />
+      <StyledButton type="button" name={FORM.EDIT} onClick={handleModalOpen}>
         <EditIcon />
       </StyledButton>
       <StyledButton>

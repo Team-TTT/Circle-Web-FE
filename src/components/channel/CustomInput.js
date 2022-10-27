@@ -41,9 +41,9 @@ const Container = styled.div`
 
 const Label = styled.label`
   width: 120px;
+  margin-right: 10px;
   font-size: 20px;
   text-align: center;
-  margin-right: 10px;
 `;
 
 const Input = styled(StyledInput)`

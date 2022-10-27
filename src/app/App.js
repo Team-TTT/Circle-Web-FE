@@ -19,6 +19,7 @@ export default function App() {
       </Route>
       <Route path="console" element={<ConsoleLayOut />}>
         <Route path="projects">
+          <Route index element={<ProjectsPage />} />
           <Route path=":projectId">
             <Route index element={<ProjectsPage />} />
             <Route path="channels" element={<ChannelsPage />} />

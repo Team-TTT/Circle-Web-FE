@@ -4,29 +4,39 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { BsCheckLg } from "react-icons/bs";
 
+import StyledInput from "../shared/StyledInput";
 import { createProject, editProject } from "../../api/projectApi";
 import { DEFAULT_VALUES, MESSAGE, FORM } from "../../config/constants";
 import theme from "../../config/constants/theme";
-import StyledInput from "../shared/StyledInput";
 
-export default function ProjectForm({ formType, toggleModal, currentProject }) {
+export default function ProjectForm({
+  formType,
+  toggleModal,
+  currentProject,
+  setCurrentProject,
+}) {
   const [titleInput, setTitleInput] = useState(
     formType === FORM.EDIT ? currentProject.title : ""
   );
-
-  const [projects, setProjects] = useOutletContext();
+  const [projects, setProjects, sendToast] = useOutletContext();
   const { projectId } = useParams();
   const navigate = useNavigate();
 
   const handleCreateProject = async () => {
     try {
+      if (!titleInput) {
+        sendToast(MESSAGE.INVALID_INPUT);
+
+        return;
+      }
+
       const data = await createProject(titleInput);
 
       if (data.id) {
-        alert(MESSAGE.PROJECT_SUCCESS_CREATE);
         navigate(`/console/projects/${data.id}`);
+        sendToast(MESSAGE.PROJECT_SUCCESS_CREATE);
       } else {
-        alert(MESSAGE.PROJECT_FAIL);
+        sendToast(MESSAGE.REQUEST_FAILED);
       }
     } catch (error) {
       navigate("/error");
@@ -35,22 +45,30 @@ export default function ProjectForm({ formType, toggleModal, currentProject }) {
 
   const handleEditProject = async () => {
     try {
+      if (!titleInput) {
+        sendToast(MESSAGE.INVALID_INPUT);
+
+        return;
+      }
+
       const data = await editProject(titleInput, projectId);
 
       if (data.result) {
-        alert(MESSAGE.PROJECT_SUCCESS_EDIT);
-
         const modifiedProjects = projects.map((project) => {
           if (project._id === projectId) {
-            return { ...project, title: titleInput };
+            const editedProject = { ...project, title: titleInput };
+            setCurrentProject(editedProject);
+
+            return editedProject;
           }
 
           return project;
         });
 
         setProjects(modifiedProjects);
+        sendToast(MESSAGE.PROJECT_SUCCESS_EDIT);
       } else {
-        alert(MESSAGE.PROJECT_FAIL);
+        sendToast(MESSAGE.REQUEST_FAILED);
       }
     } catch (error) {
       navigate("/error");
@@ -135,4 +153,5 @@ ProjectForm.propTypes = {
   formType: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired,
   currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  setCurrentProject: PropTypes.func.isRequired,
 };

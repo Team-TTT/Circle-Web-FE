@@ -9,18 +9,18 @@ import theme from "../../../config/constants/theme";
 export default function ToastMessage({
   message,
   color,
-  sendToast,
-  setSendToast,
+  isToastDisplayed,
+  setIsToastDisplayed,
 }) {
   useEffect(() => {
     const removeToast = setTimeout(() => {
-      setSendToast(false);
+      setIsToastDisplayed(false);
     }, DEFAULT_VALUES.TOAST_TIMEOUT);
 
     return () => clearTimeout(removeToast);
-  }, [setSendToast]);
+  }, [setIsToastDisplayed]);
 
-  if (!sendToast) {
+  if (!isToastDisplayed) {
     return null;
   }
 
@@ -48,8 +48,8 @@ const Wrapper = styled.div`
   cursor: auto;
 
   animation-name: toast-in-right, fade-out;
-  animation-delay: 0s, ${DEFAULT_VALUES.TOAST_TIMEOUT - 1000}ms;
-  animation-duration: 0.7s, 1s;
+  animation-delay: 0s, ${DEFAULT_VALUES.TOAST_TIMEOUT - 400}ms;
+  animation-duration: 0.7s, 0.5s;
 
   @keyframes toast-in-right {
     from {
@@ -81,8 +81,8 @@ const StyledToast = styled.div`
 ToastMessage.propTypes = {
   message: PropTypes.string.isRequired,
   color: PropTypes.string,
-  sendToast: PropTypes.bool.isRequired,
-  setSendToast: PropTypes.func.isRequired,
+  isToastDisplayed: PropTypes.bool.isRequired,
+  setIsToastDisplayed: PropTypes.func.isRequired,
 };
 
 ToastMessage.defaultProps = {
