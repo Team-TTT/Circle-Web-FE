@@ -15,13 +15,15 @@ import ChanelEdit from "../../components/channel/ChannelEdit";
 import ChanelDelete from "../../components/channel/ChannelDelete";
 import { CHANNEL } from "../../config/constants";
 import useModal from "../../hooks/useModal";
+import useToast from "../../hooks/useToast";
 
 export default function ChannelsPage() {
   const [projects] = useOutletContext();
   const [channelInfos, setChannelInfos] = useState([]);
   const [doUpdate, setDoUpdate] = useState(true);
-  const [action, setAction] = useState({});
+  const [action, setAction] = useState({ type: "", payload: "" });
   const [Modal, toggleModal] = useModal();
+  const [Toast, handleSendToast] = useToast();
 
   const { projectId } = useParams();
   const navigate = useNavigate();
@@ -38,6 +40,14 @@ export default function ChannelsPage() {
 
           setChannelInfos(data);
           setDoUpdate(false);
+
+          setAction((originAction) => {
+            if (originAction.type !== "") {
+              handleSendToast(originAction.type);
+            }
+
+            return originAction;
+          });
         } catch (error) {
           navigate("/error");
         }
@@ -45,7 +55,7 @@ export default function ChannelsPage() {
 
       getChannelInfo();
     }
-  }, [navigate, projectId, doUpdate]);
+  }, [navigate, projectId, doUpdate, handleSendToast]);
 
   const projectTitle = projects.find(({ _id }) => _id === projectId)?.title;
 
@@ -138,6 +148,7 @@ export default function ChannelsPage() {
         </TableWrapper>
       </Container>
       <Modal>{renderModalItem()}</Modal>
+      <Toast />
     </>
   );
 }

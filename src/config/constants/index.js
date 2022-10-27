@@ -14,9 +14,9 @@ export const MESSAGE = {
 };
 
 export const CHANNEL = {
-  DELETE: "delete",
-  EDIT: "edit",
-  CREATE: "create",
+  DELETE: "채널이 삭제 되었습니다.",
+  EDIT: "수정이 완료 되었습니다",
+  CREATE: "채널이 생성 되었습니다",
 };
 
 export const FORM = {
