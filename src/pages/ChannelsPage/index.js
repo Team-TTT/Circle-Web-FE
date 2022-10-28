@@ -109,8 +109,8 @@ export default function ChannelsPage() {
   return (
     <>
       <Container>
-        <AddControllerWrapper onClick={handleOnCreate}>
-          <AddController to="create">
+        <AddControllerWrapper>
+          <AddController to="create" onClick={handleOnCreate}>
             <PlusIcon />
             <AddTitle>채널 추가하기</AddTitle>
           </AddController>
