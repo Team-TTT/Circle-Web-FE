@@ -28,7 +28,7 @@ export default function ChannelForm({
   };
 
   return (
-    <FormContainer onSubmit={onSubmit}>
+    <FormContainer onSubmit={onSubmit} data-testid="channel-form">
       <CustomInput
         label="Title"
         value={title}
