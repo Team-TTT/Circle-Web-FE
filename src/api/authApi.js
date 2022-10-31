@@ -30,6 +30,7 @@ export const getUser = async (userData, token) => {
     `${config.REACT_APP_SERVER_URL}/auth/users`,
     request
   );
+
   const data = await response.json();
 
   return data;

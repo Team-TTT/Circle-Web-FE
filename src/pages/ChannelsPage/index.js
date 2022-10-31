@@ -10,9 +10,9 @@ import styled from "styled-components";
 
 import theme from "../../config/constants/theme";
 import channelApi from "../../api/channelApi";
-import ChanelCreate from "../../components/channel/ChannelCreate";
-import ChanelEdit from "../../components/channel/ChannelEdit";
-import ChanelDelete from "../../components/channel/ChannelDelete";
+import ChannelCreate from "../../components/channel/ChannelCreate";
+import ChannelEdit from "../../components/channel/ChannelEdit";
+import ChannelDelete from "../../components/channel/ChannelDelete";
 import { CHANNEL } from "../../config/constants";
 import useModal from "../../hooks/useModal";
 import useToast from "../../hooks/useToast";
@@ -79,13 +79,13 @@ export default function ChannelsPage() {
   const renderModalItem = () => {
     if (action.type === CHANNEL.CREATE) {
       return (
-        <ChanelCreate setDoUpdate={setDoUpdate} toggleModal={toggleModal} />
+        <ChannelCreate setDoUpdate={setDoUpdate} toggleModal={toggleModal} />
       );
     }
 
     if (action.type === CHANNEL.EDIT) {
       return (
-        <ChanelEdit
+        <ChannelEdit
           channelInfo={action.payload}
           setDoUpdate={setDoUpdate}
           toggleModal={toggleModal}
@@ -95,7 +95,7 @@ export default function ChannelsPage() {
 
     if (action.type === CHANNEL.DELETE) {
       return (
-        <ChanelDelete
+        <ChannelDelete
           channelInfo={action.payload}
           setDoUpdate={setDoUpdate}
           toggleModal={toggleModal}
@@ -110,7 +110,11 @@ export default function ChannelsPage() {
     <>
       <Container>
         <AddControllerWrapper>
-          <AddController to="create" onClick={handleOnCreate}>
+          <AddController
+            to="create"
+            onClick={handleOnCreate}
+            data-testid="channel-create-button"
+          >
             <PlusIcon />
             <AddTitle>채널 추가하기</AddTitle>
           </AddController>

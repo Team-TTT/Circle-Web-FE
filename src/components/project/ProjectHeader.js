@@ -70,7 +70,12 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
 
   return (
     <Container>
-      <StyledButton type="button" name={FORM.CREATE} onClick={handleModalOpen}>
+      <StyledButton
+        type="button"
+        name={FORM.CREATE}
+        onClick={handleModalOpen}
+        data-testid="project-create-button"
+      >
         <AddIcon />
       </StyledButton>
       <ProjectHeaderDropdown />

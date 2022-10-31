@@ -22,10 +22,10 @@ export default function ProjectDetailPage({ currentProject }) {
 
 
 const cdnText = `
-  <script src="https://cdn.jsdelivr.net/gh/Team-TTT/Circle-script@ttt/snippet/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/Team-TTT/Circle-script@ttt-1/snippet/index.js"></script>
 
   <!-- put your key -->
-  <script> circle("${projectInfo.id}", "${projectInfo.key}") </script>
+  <script>circle("${projectInfo.id}", "${projectInfo.key}")</script>
 `;
 
 
