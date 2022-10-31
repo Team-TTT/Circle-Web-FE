@@ -111,6 +111,13 @@ export default function ProjectForm({
   );
 }
 
+ProjectForm.propTypes = {
+  formType: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  setCurrentProject: PropTypes.func.isRequired,
+};
+
 const Container = styled.div`
   padding-top: 3vh;
   text-align: center;
@@ -148,10 +155,3 @@ const SubmitIcon = styled(BsCheckLg)`
     transition: all 1s ease;
   }
 `;
-
-ProjectForm.propTypes = {
-  formType: PropTypes.string.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  setCurrentProject: PropTypes.func.isRequired,
-};
