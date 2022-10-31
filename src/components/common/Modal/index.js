@@ -21,7 +21,7 @@ export default function Modal({ children, isOpen, setIsOpen }) {
 
   return (
     <Portal id="portal-modal">
-      <Container onClick={handleOuterClick}>
+      <Container onClick={handleOuterClick} data-testid="modal">
         <Wrapper>
           <CloseButton onClick={() => setIsOpen(false)}>
             <CloseIcon />
