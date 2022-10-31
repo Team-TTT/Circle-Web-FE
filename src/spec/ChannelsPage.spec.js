@@ -13,7 +13,7 @@ describe("ChannelsPage", () => {
     expect(screen.getByTestId("channel-create-button")).toBeInTheDocument();
   });
 
-  it("채널 추가하기를 눌으면 입력 폼이 있는 모달창이 띄워져야합니다.", () => {
+  it("채널 추가하기를 누르면 입력 폼이 있는 모달창이 띄워져야합니다.", () => {
     render(<ChannelsPage />);
     fireEvent.click(screen.getByTestId("channel-create-button"));
     expect(screen.getByTestId("channel-form")).toBeInTheDocument();

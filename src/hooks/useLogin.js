@@ -18,6 +18,7 @@ export default function useLogin() {
         { email, displayName, photoUrl: photoURL, uid },
         token
       );
+
       const { projects } = userData;
 
       if (!projects?.length) {
