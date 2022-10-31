@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../config/constants/theme";
+import MarkdownRenderer from "../../components/common/MarkdownRenderer.js";
 
 export default function GuidePage() {
   return (
     <Container>
       <GuideWrapper>
-        <h1>guide</h1>
+        <MarkdownRenderer />
       </GuideWrapper>
     </Container>
   );

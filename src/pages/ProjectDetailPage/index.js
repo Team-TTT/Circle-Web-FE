@@ -137,8 +137,8 @@ const StyledDescription = styled.p`
 
 const StyledCode = styled.div`
   padding: 18px;
-  font-size: 16px;
   background-color: #2f2f2f;
+  font-size: 16px;
   color: #eee;
   white-space: pre-wrap;
 `;
