@@ -98,12 +98,13 @@ export default function ProjectForm({
             value={titleInput}
             onChange={(event) => setTitleInput(event.target.value)}
             maxLength={DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}
+            data-testid="projectInput"
           />
           <StyledText>
             {`(${DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}자 이내)`}
           </StyledText>
         </InputContainer>
-        <StyledButton type="submit">
+        <StyledButton type="submit" data-testid="projectSubmit">
           <SubmitIcon />
         </StyledButton>
       </form>
