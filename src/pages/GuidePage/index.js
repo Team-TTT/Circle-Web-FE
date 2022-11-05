@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../config/constants/theme";
-import MarkdownRenderer from "../../components/common/MarkdownRenderer.js";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 export default function GuidePage() {
   return (
@@ -25,7 +25,7 @@ const Container = styled.section`
 const GuideWrapper = styled.section`
   width: 1056px;
   min-height: 1056px;
-  padding: 96px;
+  padding: 42px;
   margin: 36px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
   background-color: white;

@@ -51,20 +51,18 @@ export default function MarkdownRenderer() {
 
   return (
     <MarkDownWrapper>
+      <Title>서비스 이용 방법</Title>
       <Description>
-        <Title>서비스 이용 방법</Title>
-        <p>
-          <b>프로젝트 생성시 제공되는 key</b>를 아래 제공되는 CDN 또는 코드
-          스니펫에 넣으면, circle 서비스를 이용하실 수 있습니다.
-        </p>
-        <br />
-        <ListWrapper>1. CDN</ListWrapper>
-        <StyledCode>
-          <ReactMarkdown>{cdnText}</ReactMarkdown>
-        </StyledCode>
-        <br />
-        <ListWrapper>2. 코드 스니펫</ListWrapper>
+        <b>프로젝트 생성시 제공되는 key</b>를 아래 제공되는 CDN 또는 코드
+        스니펫에 넣으면, circle 서비스를 이용하실 수 있습니다.
       </Description>
+      <br />
+      <ListWrapper>1. CDN</ListWrapper>
+      <StyledCode>
+        <ReactMarkdown>{cdnText}</ReactMarkdown>
+      </StyledCode>
+      <br />
+      <ListWrapper>2. 코드 스니펫</ListWrapper>
       <StyledCode>
         <ReactMarkdown>{codeSnippet}</ReactMarkdown>
       </StyledCode>
@@ -74,15 +72,16 @@ export default function MarkdownRenderer() {
 
 const MarkDownWrapper = styled.div`
   font-size: 16px;
+  list-style: none;
 `;
 
-const Description = styled.div`
-  list-style: none;
+const Description = styled.p`
+  font-size: 18px;
 `;
 
 const Title = styled.h1`
   font-size: 24px;
-  margin-bottom: 15px;
+  margin-bottom: 32px;
 `;
 
 const ListWrapper = styled.li`
