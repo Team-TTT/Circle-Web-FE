@@ -20,6 +20,12 @@ export default function ConsoleLayOut() {
       try {
         const data = await getAuthUser();
 
+        if (data?.message) {
+          navigate("/");
+
+          return;
+        }
+
         setAuthUserData(data);
         setProjects(data.projects);
       } catch (error) {
@@ -36,7 +42,6 @@ export default function ConsoleLayOut() {
 
   return (
     <Container>
-      {isToastSend && isProjectLoaded && <Toast />}
       <Sidebar authUserData={authUserData} />
       <Outlet
         context={[
@@ -47,6 +52,7 @@ export default function ConsoleLayOut() {
           isProjectLoaded,
         ]}
       />
+      {isToastSend && isProjectLoaded && <Toast />}
     </Container>
   );
 }

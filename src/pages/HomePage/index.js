@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Navigate } from "react-router-dom";
 
 import DownIcon from "../../components/shared/DownIcon";
 import useLogin from "../../hooks/useLogin";
-import checkSessionCookie from "../../utils/checkSessionCookie";
 import theme from "../../config/constants/theme";
 import appImage1 from "../../assets/images/app2.png";
 import appImage2 from "../../assets/images/app3.png";
@@ -19,12 +17,6 @@ export default function HomePage() {
       behavior: "smooth",
     });
   };
-
-  const isAuthUser = checkSessionCookie("session");
-
-  if (isAuthUser) {
-    return <Navigate to="/console/projects" replace />;
-  }
 
   return (
     <Container>

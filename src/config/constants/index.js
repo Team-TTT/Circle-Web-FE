@@ -27,9 +27,8 @@ export const FORM = {
 };
 
 export const PROJECT_INFO = {
-  LINK_TO_GUIDE:
-    "자세한 사용 방법은 우측의 '사용 가이드 문서' 링크를 통해 확인하실 수 있습니다.",
   DESCRIPTION:
-    "아래의 스크립트에 프로젝트 ID와 secret-key를 입력한 후, 스크립트 전체를 복사하여 사용하시는 html의 <body> Tag 내부 최하단에 붙혀 넣어주세요.",
-  CODE_SNIPPET: "코드 스니펫이 위치할 예정입니다",
+    "아래의 스크립트에 프로젝트 ID와 secret-key가 정확히 입력되었는지 확인 후, 스크립트 전체를 복사하여 사용하시는 html의 <body> Tag 내부 최하단에 붙혀 넣어주세요.",
+  COPY_SUCCESS: "복사 성공",
+  COPY_FAILED: "복사 실패",
 };

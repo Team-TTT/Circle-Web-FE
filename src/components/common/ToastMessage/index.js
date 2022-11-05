@@ -33,6 +33,17 @@ export default function ToastMessage({
   );
 }
 
+ToastMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  isToastDisplayed: PropTypes.bool.isRequired,
+  setIsToastDisplayed: PropTypes.func.isRequired,
+};
+
+ToastMessage.defaultProps = {
+  color: theme.gray,
+};
+
 const Wrapper = styled.div`
   position: fixed;
   top: 12px;
@@ -77,14 +88,3 @@ const StyledToast = styled.div`
   letter-spacing: 0.29px;
   text-align: center;
 `;
-
-ToastMessage.propTypes = {
-  message: PropTypes.string.isRequired,
-  color: PropTypes.string,
-  isToastDisplayed: PropTypes.bool.isRequired,
-  setIsToastDisplayed: PropTypes.func.isRequired,
-};
-
-ToastMessage.defaultProps = {
-  color: theme.gray,
-};

@@ -105,8 +105,12 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
   );
 }
 
+ProjectHeader.propTypes = {
+  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  setCurrentProject: PropTypes.func.isRequired,
+};
+
 const Container = styled.header`
-  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -160,8 +164,3 @@ const DeleteIcon = styled(MdOutlineDelete)`
     transition: all 1s ease;
   }
 `;
-
-ProjectHeader.propTypes = {
-  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  setCurrentProject: PropTypes.func.isRequired,
-};
