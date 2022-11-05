@@ -79,11 +79,19 @@ export default function ProjectHeader({ currentProject, setCurrentProject }) {
         <AddIcon />
       </StyledButton>
       <ProjectHeaderDropdown />
-      <StyledButton type="button" name={FORM.EDIT} onClick={handleModalOpen}>
+      <StyledButton
+        type="button"
+        name={FORM.EDIT}
+        onClick={handleModalOpen}
+        data-testid="project-edit-button"
+      >
         <EditIcon />
       </StyledButton>
       <StyledButton>
-        <DeleteIcon onClick={handleDeleteProject} />
+        <DeleteIcon
+          onClick={handleDeleteProject}
+          data-testid="project-delete-button"
+        />
       </StyledButton>
       <Modal>
         <ProjectForm
