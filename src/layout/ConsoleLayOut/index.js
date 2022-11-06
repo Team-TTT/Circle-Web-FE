@@ -11,7 +11,7 @@ export default function ConsoleLayOut() {
   const [projects, setProjects] = useState([]);
   const [isProjectLoaded, setIsProjectLoaded] = useState(false);
 
-  const [Toast, sendToast, isToastSend] = useToast();
+  const [Toast, sendToast] = useToast();
 
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ export default function ConsoleLayOut() {
           isProjectLoaded,
         ]}
       />
-      {isToastSend && isProjectLoaded && <Toast />}
+      {isProjectLoaded && <Toast />}
     </Container>
   );
 }
