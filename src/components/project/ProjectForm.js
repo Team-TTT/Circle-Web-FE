@@ -98,18 +98,26 @@ export default function ProjectForm({
             value={titleInput}
             onChange={(event) => setTitleInput(event.target.value)}
             maxLength={DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}
+            data-testid="projectInput"
           />
           <StyledText>
             {`(${DEFAULT_VALUES.PROJECT_TITLE_MAX_LENGTH}자 이내)`}
           </StyledText>
         </InputContainer>
-        <StyledButton type="submit">
+        <StyledButton type="submit" data-testid="projectSubmit">
           <SubmitIcon />
         </StyledButton>
       </form>
     </Container>
   );
 }
+
+ProjectForm.propTypes = {
+  formType: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  setCurrentProject: PropTypes.func.isRequired,
+};
 
 const Container = styled.div`
   padding-top: 3vh;
@@ -148,10 +156,3 @@ const SubmitIcon = styled(BsCheckLg)`
     transition: all 1s ease;
   }
 `;
-
-ProjectForm.propTypes = {
-  formType: PropTypes.string.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  currentProject: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  setCurrentProject: PropTypes.func.isRequired,
-};
