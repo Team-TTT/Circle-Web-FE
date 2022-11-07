@@ -21,6 +21,10 @@ Circle은 웹페이지를 방문한 사용자들이 실시간으로 음성 대�
 - [Circle homepage](https://www.ttt-circle.online/)
 - [Circle demo page](https://sage-custard-c3a598.netlify.app/)
 
+### Repository
+- [Frontend - Service Client](https://github.com/Team-TTT/Circle-Service-FE)
+- [Backend](https://github.com/Team-TTT/Circle-BE)
+
 <br>
 
 |||
