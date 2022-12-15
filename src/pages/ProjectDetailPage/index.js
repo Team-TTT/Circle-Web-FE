@@ -20,9 +20,7 @@ export default function ProjectDetailPage({ currentProject }) {
     : { id: "가져오는 중...", key: "생성중..." };
 
 const cdnText = `
-  <script src="https://cdn.jsdelivr.net/gh/Team-TTT/Circle-script@ttt-1/snippet/index.js"></script>
-
-  <!-- put your key -->
+  <script src="https://cdn.jsdelivr.net/gh/Team-TTT/Circle-script@ttt/snippet/index.js"></script>
   <script>circle("${projectInfo.id}", "${projectInfo.key}")</script>
 `;
 
